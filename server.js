@@ -3,17 +3,22 @@ const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 
-const callRoutes = require("./calls");
-const contactRoutes = require("./contacts");
-const webhookRoutes = require("./webhooks");
-const authMiddleware = require("./auth");
+const callRoutes = require("./routes/calls");
+const contactRoutes = require("./routes/contacts");
+const webhookRoutes = require("./routes/webhooks");
+const authMiddleware = require("./middleware/auth");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // ─── Security ────────────────────────────────────────────────────────────────
-app.use(helmet());
-app.use(cors({ origin: process.env.FRONTEND_URL || "*" }));
+app.use(helmet({ crossOriginResourcePolicy: false }));
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+app.options("*", cors()); // Handle preflight requests
 app.use(express.json());
 
 // Rate limiting — 100 requests per minute per IP
