@@ -3,10 +3,10 @@ const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 
-const callRoutes = require("./routes/calls");
-const contactRoutes = require("./routes/contacts");
-const webhookRoutes = require("./routes/webhooks");
-const authMiddleware = require("./middleware/auth");
+const callRoutes = require("./calls");
+const contactRoutes = require("./contacts");
+const webhookRoutes = require("./webhooks");
+const authMiddleware = require("./auth");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
