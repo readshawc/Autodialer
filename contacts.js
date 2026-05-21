@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const queue = require("../services/queue");
+const queue = require("./queue");
 
 // GET /contacts — list all contacts with their call logs
 router.get("/", (req, res) => {
