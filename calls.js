@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const dialer = require("../services/dialer");
-const queue = require("../services/queue");
+const dialer = require("./dialer");
+const queue = require("./queue");
 
 // GET /calls/state — full app state (contacts, stats, params, active call)
 router.get("/state", (req, res) => {

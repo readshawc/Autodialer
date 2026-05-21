@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const dialer = require("../services/dialer");
+const dialer = require("./dialer");
 
 /**
  * POST /webhooks/telnyx
